@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\TermController;
 use Illuminate\Http\Request;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('terms','TermController@store');
+Route::get('terms','TermController@index');
