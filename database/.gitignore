@@ -1,0 +1,5 @@
+*.sqlite
+*.sqlite-journal
+./vendor
+./vscode
+./public/storage
