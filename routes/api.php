@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 /*
@@ -18,5 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('terms', TermController::class, [
-    'except'=>['show','update']
+    'except' => ['show', 'update']
 ]);
+
+Route::get('categories', function () {
+    $categories = Category::all();
+    return response()->json([
+        'success' => true,
+        'data' => $categories
+    ]);
+});
+
+Route::apiResource('blogs', BlogController::class);
