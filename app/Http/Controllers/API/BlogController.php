@@ -26,4 +26,22 @@ class BlogController extends Controller
         $blogs = Blog::paginate($request->paginate);
         return response()->json($blogs); 
     }
+
+    public function show(Blog $blog){
+        return response()->json(['data'=>$blog]); 
+    }
+
+    public function update(Blog $blog, Request $request){
+
+        $blog->update([
+            'image'=> $request->image,
+            'excerpt' => $request->excerpt,
+            'title' => $request->title, 
+            'category_id' => $request->category_id,
+            'content' => $request->content,
+            'author' => $request->author
+        ]);
+        
+        return response()->json(true); 
+    }
 }
